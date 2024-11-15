@@ -5,17 +5,17 @@ const jwt = require('jsonwebtoken')
 // registers
 exports.registerController = async (req, res) => {
      console.log(req.body);
-     const { id, firstName, lastName, email, password, phone } = req.body 
-     console.log(id, firstName, lastName, email, password, phone);
+     const { userName, email, password } = req.body 
+     console.log( userName, email, password );
      try {
-         const existingUser = await users.findOne({ id, email })
+         const existingUser = await users.findOne({ email })
          if (existingUser) {
              res.status(406).json("You are already registered!!!")
          } else {
              const hashPassword = await bcrypt.hash(password, 10)
 
              const newUser = new users({
-                 id, firstName, lastName, email, password: hashPassword, phone
+                userName,email, password: hashPassword
              })
              await newUser.save()
              res.status(200).json(newUser)
