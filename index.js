@@ -16,11 +16,11 @@ TmServer.use(router)
 const PORT= 3000 || process.env.PORT
 
 TmServer.listen(PORT,()=>{
-    console.log(`pfServer in running on the ${PORT} and wating for client request!!!`);
+    console.log(`TmServer in running on the ${PORT} and wating for client request!!!`);
     
 })
 
 //resloving get request to http://localhost:3000/
 TmServer.get('/',(req,res)=>{
-    res.status(200).send(`<h1 style="color:red;">pfserver Stareted at port and waiting for client request !!!</h1>`)
+    res.status(200).send(`<h1 style="color:red;">TmServer Stareted at port and waiting for client request !!!</h1>`)
 })

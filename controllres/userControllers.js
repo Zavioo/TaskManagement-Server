@@ -34,7 +34,7 @@ exports.loginController = async (req, res) => {
      try {
          existingUser = await users.findOne({ email })
          if (existingUser) {
-             const token = jwt.sign({ userId: existingUser.id }, process.env.JWTPASSWORD)
+             const token = jwt.sign({ userId: existingUser.userName }, process.env.JWTPASSWORD)
              // console.log(token);
              const isMatch = await bcrypt.compareSync(password, existingUser.password)
            
